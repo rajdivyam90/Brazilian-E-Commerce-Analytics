@@ -19,7 +19,7 @@ def load_customer_data():
         file_path = BASE_DIR / "customer_orders_geolocation_payments.parquet"
         
     return pd.read_parquet(file_path)
-    
+
 # --- PAGE CONFIGURATION ---
 st.set_page_config(
     page_title="Olist E-Commerce Analytics Dashboard",
@@ -55,7 +55,7 @@ if selected_tab == "Customer Dashboard":
     
     @st.cache_data
     def load_customer_data():
-        return pd.read_parquet('data/customer_orders_geolocation_payments.parquet')
+        return pd.read_parquet(file_path)
     
     df_cust = load_customer_data()
     
