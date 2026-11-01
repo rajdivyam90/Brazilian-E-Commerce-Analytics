@@ -55,7 +55,7 @@ if selected_tab == "Customer Dashboard":
     
     @st.cache_data
     def load_customer_data():
-        file_path = BASE_DIR / "customer_orders_geolocation_payments.parquet"
+        file_path = BASE_DIR /"data"/"customer_orders_geolocation_payments.parquet"
         return pd.read_parquet(file_path)
     
     df_cust = load_customer_data()
