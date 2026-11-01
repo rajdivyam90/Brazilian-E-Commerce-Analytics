@@ -26,7 +26,27 @@ st.set_page_config(
     page_icon="📊",
     layout="wide"
 )
+# --- AUTHENTICATION / LOGIN PAGE ---
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
 
+if not st.session_state.logged_in:
+    st.title("🔒 Please Login")
+    st.write("Enter your credentials to access the Olist E-Commerce Analytics Dashboard.")
+    
+    # Create input fields
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+    
+    if st.button("Login"):
+        if username == "admin" and password == "olist2026":
+            st.session_state.logged_in = True
+            st.rerun()
+        else:
+            st.error("❌ Invalid username or password. Please try again.")
+            
+    # Stop the rest of the script from running if not logged in
+    st.stop()
 # --- MAIN DASHBOARD TITLE ---
 st.title("🛍️ Olist E-Commerce Analytics Dashboard")
 st.markdown("Comprehensive business intelligence insights covering customer behavior, order analytics, sales trends, product performance, seller metrics, and customer satisfaction.")
