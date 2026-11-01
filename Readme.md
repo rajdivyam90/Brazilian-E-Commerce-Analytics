@@ -223,11 +223,23 @@ An interactive, multi-tab Business Intelligence web application built to analyze
 
 ## 
 
-#### Live App
+#### Live App (Requires Login Credentials) 
 
 
 
 Explore the live application here: [View Streamlit App](https://brazilian-e-commerce-analytics-divyamraj-e4jrruzemd6fdn7gphsxe7.streamlit.app/)
+
+
+
+##### Login Credentials:
+
+
+
+**username: admin**
+
+**password: olist2026**
+
+
 
 
 
