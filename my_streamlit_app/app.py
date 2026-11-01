@@ -3,7 +3,22 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import joblib
+import os
+from pathlib import Path
 
+# Get the directory where app.py lives
+BASE_DIR = Path(__file__).resolve().parent
+
+@st.cache_data
+def load_customer_data():
+    # Construct absolute path dynamically
+    file_path = BASE_DIR / "data" / "customer_orders_geolocation_payments.parquet"
+    
+    # Fallback check if the file sits directly inside my_streamlit_app without a data subfolder
+    if not file_path.exists():
+        file_path = BASE_DIR / "customer_orders_geolocation_payments.parquet"
+        
+    return pd.read_parquet(file_path)
 # --- PAGE CONFIGURATION ---
 st.set_page_config(
     page_title="Olist E-Commerce Analytics Dashboard",
