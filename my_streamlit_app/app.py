@@ -173,7 +173,7 @@ if selected_tab == "Customer Dashboard":
             st.markdown("##### Total customer & Revenue per segment")
             
             try:
-                df_rfm = pd.read_parquet('data/rfm.parquet')
+                df_rfm = pd.read_parquet(BASE_DIR / 'data' / 'rfm.parquet')
             except Exception:
                 df_rfm = None
             
@@ -239,7 +239,7 @@ if selected_tab == "Customer Dashboard":
         
         # Load RFM data safely for the segment chart
         try:
-            df_rfm = pd.read_parquet('data/fm.parquet')
+            df_rfm = pd.read_parquet(BASE_DIR / 'data' / 'rfm.parquet')
         except Exception:
             df_rfm = None
 
@@ -248,7 +248,7 @@ if selected_tab == "Customer Dashboard":
             
             # Load payment dataset directly to ensure payment_type is available
             try:
-                df_pay_source = pd.read_parquet('data/order_cust_payments.parquet')
+                df_pay_source = pd.read_parquet(BASE_DIR / 'data' / 'order_cust_payments.parquet')
             except Exception:
                 df_pay_source = df_cust.copy()
             
@@ -388,7 +388,7 @@ if selected_tab == "Orders Dashboard":
     
     @st.cache_data
     def load_orders_data():
-        return pd.read_parquet('data/order_cust_payments.parquet') # or your primary orders table
+        return pd.read_parquet(BASE_DIR / 'data' / 'order_cust_payments.parquet') # or your primary orders table
         
     df_orders = load_orders_data()
     
@@ -467,10 +467,10 @@ if selected_tab == "Orders Dashboard":
         st.markdown("##### Top 20 Cities Analysis (Log Scale)")
         
         try:
-            df_city_source = pd.read_parquet("data/customer_orders_geolocation_payments.parquet")
+            df_city_source = pd.read_parquet(BASE_DIR / "data" / "customer_orders_geolocation_payments.parquet")
         except Exception:
             try:
-                df_city_source = pd.read_parquet("data/order_cust_payments.parquet")
+                df_city_source = pd.read_parquet(BASE_DIR / "data" / "order_cust_payments.parquet")
             except Exception:
                 df_city_source = pd.DataFrame()
 
@@ -562,7 +562,7 @@ if selected_tab == "Orders Dashboard":
             st.markdown("##### Total Orders per Weekflag by Month")
             
             try:
-                df_trend = pd.read_parquet("data/order_payments_clean.parquet")
+                df_trend = pd.read_parquet(BASE_DIR / "data" / "order_payments_clean.parquet")
             except Exception:
                 df_trend = order_cust_payments.copy()
                 
@@ -640,7 +640,7 @@ if selected_tab == "Orders Dashboard":
             
             try:
                 # Load the specific parquet file for clean orders
-                df_timely = pd.read_parquet("data/order_payments_clean.parquet")
+                df_timely = pd.read_parquet(BASE_DIR / "data" / "order_payments_clean.parquet")
             except Exception:
                 df_timely = order_cust_payments.copy()  # Fallback to main dataframe if needed
                 
@@ -700,7 +700,7 @@ if selected_tab == "Orders Dashboard":
         st.markdown("##### Average delivery time (days) by State")
         
         try:
-            df_delivery = pd.read_parquet("data/customer_orders_geolocation_payments.parquet")
+            df_delivery = pd.read_parquet(BASE_DIR/"data"/"customer_orders_geolocation_payments.parquet")
         except Exception:
             df_delivery = order_cust_payments.copy()
             
@@ -777,7 +777,7 @@ if selected_tab == "Orders Dashboard":
         st.markdown("##### Total orders by Hour")
         
         try:
-            df_hour = pd.read_parquet("data/order_payments_clean.parquet")
+            df_hour = pd.read_parquet(BASE_DIR/"data"/"order_payments_clean.parquet")
         except Exception:
             df_hour = order_cust_payments.copy()
             
@@ -857,7 +857,7 @@ if selected_tab == "Orders Dashboard":
         st.markdown("##### Total orders by State")
         
         try:
-            df_state_orders = pd.read_parquet("data/customer_orders_geolocation_payments.parquet")
+            df_state_orders = pd.read_parquet(BASE_DIR/"data"/"customer_orders_geolocation_payments.parquet")
         except Exception:
             df_state_orders = order_cust_payments.copy()
             
@@ -932,7 +932,7 @@ elif selected_tab == "Sales Trend Dashboard":
     st.markdown("### 📊 Sales Trend Dashboard Filters")
 
     try:
-        df_sales_base = pd.read_parquet("data/customer_orders_geolocation_payments.parquet")
+        df_sales_base = pd.read_parquet(BASE_DIR/"data"/"customer_orders_geolocation_payments.parquet")
     except Exception:
         df_sales_base = order_cust_payments.copy()
 
@@ -996,7 +996,7 @@ elif selected_tab == "Sales Trend Dashboard":
     # 2. SALES TREND DASHBOARD - CHARTS (Separate Rows)
     # -------------------------------------------------------------
     try:
-        df_clean_trend = pd.read_parquet("data/order_payments_clean.parquet")
+        df_clean_trend = pd.read_parquet(BASE_DIR/"data"/"order_payments_clean.parquet")
     except Exception:
         df_clean_trend = order_cust_payments.copy()
 
@@ -1190,7 +1190,7 @@ elif selected_tab == "Products Dashboard":
     st.markdown("---")
     
     try:
-        df_products = pd.read_parquet("data/order_item_products_sellers.parquet")
+        df_products = pd.read_parquet(BASE_DIR/"data"/"order_item_products_sellers.parquet")
     except Exception:
         df_products = pd.DataFrame() # Fallback if file missing
         
@@ -1249,7 +1249,7 @@ elif selected_tab == "Products Dashboard":
         st.markdown("### 📅 Product Month Filter")
         
         try:
-            df_reviews_source = pd.read_parquet("data/order_items_products_sellers_orders_reviews.parquet")
+            df_reviews_source = pd.read_parquet(BASE_DIR/"data"/"order_items_products_sellers_orders_reviews.parquet")
             df_reviews_source.columns = [str(c).strip() for c in df_reviews_source.columns]
             
             # Find order and month columns in the reviews source table
@@ -1380,7 +1380,7 @@ elif selected_tab == "Products Dashboard":
         st.markdown("##### Category Penetration (Top 20 Products)")
         
         try:
-            df_pen = pd.read_parquet("data/category_penetration.parquet")
+            df_pen = pd.read_parquet(BASE_DIR/"data"/"category_penetration.parquet")
             df_pen.columns = [str(c).strip() for c in df_pen.columns]
         except Exception:
             df_pen = pd.DataFrame()
@@ -1536,17 +1536,17 @@ elif selected_tab == "Sellers Dashboard":
     # LOAD DATA
     # -------------------------------------------------------------
     try:
-        df_sellers = pd.read_parquet("data/order_cust_payments.parquet")
+        df_sellers = pd.read_parquet(BASE_DIR/"data"/"order_cust_payments.parquet")
         df_sellers.columns = [str(c).strip() for c in df_sellers.columns]
     except Exception:
         df_sellers = pd.DataFrame()
         
     try:
-        df_sellers_items = pd.read_parquet("data/order_items_products_sellers_orders.parquet")
+        df_sellers_items = pd.read_parquet(BASE_DIR/"data"/"order_items_products_sellers_orders.parquet")
         df_sellers_items.columns = [str(c).strip() for c in df_sellers_items.columns]
     except Exception:
         try:
-            df_sellers_items = pd.read_parquet("data/order_item_products_sellers.parquet")
+            df_sellers_items = pd.read_parquet(BASE_DIR/"data"/"order_item_products_sellers.parquet")
             df_sellers_items.columns = [str(c).strip() for c in df_sellers_items.columns]
         except Exception:
             df_sellers_items = pd.DataFrame()
@@ -1767,7 +1767,7 @@ elif selected_tab == "Sellers Dashboard":
             
             # Load the exact table requested
             try:
-                df_reviews_table = pd.read_parquet("data/order_items_products_sellers_orders_reviews.parquet")
+                df_reviews_table = pd.read_parquet(BASE_DIR/"data"/"order_items_products_sellers_orders_reviews.parquet")
                 df_reviews_table.columns = [str(c).strip() for c in df_reviews_table.columns]
             except Exception:
                 df_reviews_table = pd.DataFrame()
@@ -1843,7 +1843,7 @@ elif selected_tab == "Sellers Dashboard":
         st.markdown("##### Seller Diversity: Unique Products & Categories")
         
         try:
-            df_diversity = pd.read_parquet("data/seller_diversity.parquet")
+            df_diversity = pd.read_parquet(BASE_DIR/"data"/"seller_diversity.parquet")
             df_diversity.columns = [str(c).strip() for c in df_diversity.columns]
         except Exception:
             df_diversity = pd.DataFrame()
@@ -1919,7 +1919,7 @@ elif selected_tab == "Customer Satisfaction Dashboards":
     @st.cache_data
     def load_csat_data():
         try:
-            df = pd.read_parquet("data/order_items_products_sellers_orders_reviews.parquet")
+            df = pd.read_parquet(BASE_DIR/"data"/"order_items_products_sellers_orders_reviews.parquet")
             df.columns = [str(c).strip() for c in df.columns]
             return df
         except Exception:
@@ -1928,7 +1928,7 @@ elif selected_tab == "Customer Satisfaction Dashboards":
     @st.cache_data
     def load_reviews_kpi_data():
         try:
-            df = pd.read_parquet("data/reviews.parquet")
+            df = pd.read_parquet(BASE_DIR/"data"/"reviews.parquet")
             df.columns = [str(c).strip() for c in df.columns]
             return df
         except Exception:
