@@ -2280,8 +2280,8 @@ elif selected_tab == "⭐ Review Prediction Model":
     @st.cache_resource
     def load_prediction_assets():
         try:
-            model = joblib.load("logistic_review_model.pkl")
-            medians = joblib.load("model_medians.pkl")
+            model = joblib.load(BASE_DIR/"logistic_review_model.pkl")
+            medians = joblib.load(BASE_DIR/"model_medians.pkl")
             return model, medians
         except Exception:
             return None, None
