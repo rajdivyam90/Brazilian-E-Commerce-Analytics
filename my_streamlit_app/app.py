@@ -11,10 +11,10 @@ BASE_DIR = Path(__file__).resolve().parent
 
 @st.cache_data
 def load_customer_data():
-    # Construct absolute path dynamically
+    # Build the path dynamically using BASE_DIR
     file_path = BASE_DIR / "data" / "customer_orders_geolocation_payments.parquet"
     
-    # Fallback check if the file sits directly inside my_streamlit_app without a data subfolder
+    # Fallback if the file is directly in the folder without a 'data' subfolder
     if not file_path.exists():
         file_path = BASE_DIR / "customer_orders_geolocation_payments.parquet"
         
