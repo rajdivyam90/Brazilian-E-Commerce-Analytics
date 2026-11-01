@@ -293,7 +293,7 @@ if selected_tab == "Customer Dashboard":
             
             # Load directly from the file where revenue_segment actually lives
             try:
-                df_rev_source = pd.read_parquet('data/order_cust_payments.parquet')
+                df_rev_source = pd.read_parquet(BASE_DIR/'data'/'order_cust_payments.parquet')
             except Exception:
                 df_rev_source = None
             
