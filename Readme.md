@@ -16,7 +16,7 @@ The primary objective of this project is to analyze sales performance, customer 
 
 
 
-Olist is one of Brazil's largest e-commerce marketplaces, connecting thousands of independent sellers with customers nationwide. As the business scales, managing performance across sales, customers, sellers, and delivery becomes increasingly critical. The client has provided us with sales data from 2016 to 2018, spanning across 9 tables providing data of  99,441 customers, 3095 sellers \& 32,951 products. We are expected to provide data driven analysis of key metrics at product level, customer level, sales level, supplier level, etc. 
+Olist is one of Brazil's largest e-commerce marketplaces, connecting thousands of independent sellers with customers nationwide. As the business scales, managing performance across sales, customers, sellers, and delivery becomes increasingly critical. The client has provided us with sales data from 2016 to 2018, spanning across 9 tables providing data of  99,441 customers, 3095 sellers \& 32,951 products. We are expected to provide data driven analysis of key metrics at product level, customer level, sales level, supplier level, etc.
 
 
 
@@ -92,13 +92,13 @@ Olist is one of Brazil's largest e-commerce marketplaces, connecting thousands o
 
 
 
-###### Insights: 
+###### Insights:
 
 
 
 * Over 73% of orders were paid through credit card and least by debit card.
 * Weekday sales contribute to majority of the sales and revenue whereas weekend sales has very less contribution.
-* Over 89% orders were timely approved, processed and delivered. Certain states are performing bad in terms of order volume and delivery times. Certain orders in cities have average delivery time above 3 months. 
+* Over 89% orders were timely approved, processed and delivered. Certain states are performing bad in terms of order volume and delivery times. Certain orders in cities have average delivery time above 3 months.
 * High volume of orders are received during 10AM and 11PM which marks this time as high productive time for increased revenue.
 * Average order delivery time increased substantially in Q4. Christmas, Halloween and New year time shows increased order volume which is likely the reason for extended delivery days.
 * Certain cities and states are performing worst while handling order volume and the lowest revenue generators.
@@ -155,7 +155,7 @@ Olist is one of Brazil's largest e-commerce marketplaces, connecting thousands o
 
 
 
-* Out of 3095 sellers, a few of them were performing really bad in terms of order volume and average delivery days with few of them having average delivery days in months. 
+* Out of 3095 sellers, a few of them were performing really bad in terms of order volume and average delivery days with few of them having average delivery days in months.
 * Seller diversity in terms of product categories is low for majority of sellers with only a few of them selling more than 5 unique products/product categories.
 * Certain states have low number of sellers despite handling high order value meanwhile few states have less number of sellers altogether.
 * Few sellers performed worst in terms of order delivery times and revenue generated with sellers from SP outperforming the rest.
@@ -171,8 +171,8 @@ Olist is one of Brazil's largest e-commerce marketplaces, connecting thousands o
 
 
 
-* Geographic Expansion \& Regional Hub Optimization: Decentralize fulfilment from State SP: Given that State SP concentrates the highest density of sellers and order volume, establish localized regional fulfilment hubs or warehouses in underrepresented states (such as AM, MA, PA, and PI) where demand outpaces local seller representation. This will reduce shipping distances and transit bottlenecks. 
-* Sellers SLA Enforcement \& Performance Governance: Implement Strict Delivery Thresholds: Identify and penalize the underperforming tail of sellers whose fulfillment and delivery cycles stretch beyond 20 days (and up to 6 months). Establish automated warning flags, penalize low SLA compliance with lower search visibility on the marketplace, or suspend chronically delayed vendors to protect customer satisfaction. 
+* Geographic Expansion \& Regional Hub Optimization: Decentralize fulfilment from State SP: Given that State SP concentrates the highest density of sellers and order volume, establish localized regional fulfilment hubs or warehouses in underrepresented states (such as AM, MA, PA, and PI) where demand outpaces local seller representation. This will reduce shipping distances and transit bottlenecks.
+* Sellers SLA Enforcement \& Performance Governance: Implement Strict Delivery Thresholds: Identify and penalize the underperforming tail of sellers whose fulfillment and delivery cycles stretch beyond 20 days (and up to 6 months). Establish automated warning flags, penalize low SLA compliance with lower search visibility on the marketplace, or suspend chronically delayed vendors to protect customer satisfaction.
 * Benchmark \& Scale High-Performing Vendor Practices: Study \& Replicate Efficiency: Conduct a best-practice audit on high-volume sellers who successfully maintain a median delivery time under 8 days despite heavy order loads. Create incentive structures or priority placement programs for these high-efficiency vendors and share their operational playbooks across the platform.
 * Establish localized regional fulfilment hubs per state where demand is more than what the sellers can handle. It will reduce the distance between customers and sellers and ensure higher delivery speed.
 * Create an audit report for such underperforming sellers and offer them implementation practices from high performing sellers.
@@ -202,12 +202,55 @@ Olist is one of Brazil's largest e-commerce marketplaces, connecting thousands o
 
 
 
-* Analyze review score and comments in comparison to customer 360 and understand if reviews are from genuine customers or bots. 
+* Analyze review score and comments in comparison to customer 360 and understand if reviews are from genuine customers or bots.
 * Understand competitions and implement their strategy for better customer satisfaction.
 * Send a follow up survey on email or phone number of low rating customers and understand the reason in depth. Reward them for taking this survey by offers for next orders.
 * States having consistent lower rating should be audited and the sellers and logistics hub there should be kept in check.
 * Consider improving product quality, delivery times, or customer service in the  to boost satisfaction.
 * Sustain high performance in musicals, fashion and books by rewarding loyal customers with promotions or discounts to strengthen loyalty.
-* Launch customer satisfaction improvement programs across all categories with a focus on personalization, better customer service, and optimized shopping experiences. 
+* Launch customer satisfaction improvement programs across all categories with a focus on personalization, better customer service, and optimized shopping experiences.
 * For sellers having a low rating, stricter checks should be done on them and they should be provided with measures to improve.
+
+
+
+## 
+
+## Analytics \& Machine Learning Dashboard
+
+
+
+An interactive, multi-tab Business Intelligence web application built to analyze customer behavior, sales trends, product categories, seller performance, and customer satisfaction for Olist Brazilian E-Commerce data. It also features a machine learning **Review Score Prediction Model** powered by Logistic Regression.
+
+## 
+
+#### Live App
+
+
+
+Explore the live application here: [View Streamlit App](https://brazilian-e-commerce-analytics-divyamraj-e4jrruzemd6fdn7gphsxe7.streamlit.app/)
+
+
+
+#### Key Dashboards \& Features
+
+
+
+* **Customer Dashboard:** Geographic distribution, RFM segmentation, payment preferences, and active filtering by city and month.
+* **Orders \& Sales Trends:** Revenue metrics, delivery efficiency, top cities analysis, and hourly/weekly ordering patterns.
+* **Products Dashboard:** Category penetration metrics, price-freight correlations, and top-performing product categories.
+* **Sellers Dashboard:** Seller diversity metrics, delivery delays identification, and regional performance.
+* **Customer Satisfaction (CSAT):** Review score distributions, response turnaround times, and sentiment tracking.
+* **⭐ Review Prediction Model:** An interactive ML portal where users can input order characteristics to predict customer review scores in real-time.
+
+
+
+#### Tech Stack
+
+
+
+* **Language:** Python
+* **Data Processing \& Analysis:** Pandas, NumPy, Parquet
+* **Machine Learning:** Scikit-learn, Logistic Regression, Joblib
+* **Data Visualization:** Plotly (Express \& Graph Objects)
+* **Web Framework:** Streamlit (Deployed on Streamlit Community Cloud)
 
